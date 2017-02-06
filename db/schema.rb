@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170206062712) do
+ActiveRecord::Schema.define(version: 20170206150021) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,4 +21,12 @@ ActiveRecord::Schema.define(version: 20170206062712) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "schedules", force: :cascade do |t|
+    t.integer  "channel_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["channel_id"], name: "index_schedules_on_channel_id", unique: true, using: :btree
+  end
+
+  add_foreign_key "schedules", "channels"
 end
