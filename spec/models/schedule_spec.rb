@@ -15,4 +15,12 @@ RSpec.describe Schedule, type: :model do
       end
     end
   end
+
+  describe '#schedule_items' do
+    it { is_expected.to have_many(:schedule_items).dependent(:destroy) }
+  end
+
+  describe '#shows' do
+    it { is_expected.to have_many(:shows).through(:schedule_items) }
+  end
 end
