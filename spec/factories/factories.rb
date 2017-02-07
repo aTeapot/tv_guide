@@ -10,4 +10,10 @@ FactoryGirl.define do
   factory :category do
     name { Faker::Lorem.unique.word }
   end
+
+  factory :show do
+    name { Faker::Book.title }
+    description { Faker::Lorem.sentence }
+    category
+  end
 end
