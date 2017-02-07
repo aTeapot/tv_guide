@@ -10,4 +10,3 @@ RSpec.describe Channel, type: :model do
     it { is_expected.to have_one(:schedule).dependent(:destroy) }
   end
 end
-

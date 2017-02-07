@@ -6,4 +6,8 @@ FactoryGirl.define do
   factory :schedule do
     channel
   end
+
+  factory :category do
+    name { Faker::Lorem.unique.word }
+  end
 end
