@@ -8,7 +8,10 @@ RSpec.describe Schedule, type: :model do
   end
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of(:channel_id) }
+    context 'with no channel' do
+      subject(:schedule) { build(:schedule, channel: nil) }
+      it { is_expected.not_to be_valid }
+    end
 
     context 'when channel already has a schedule' do
       let(:channel) { create(:channel) }

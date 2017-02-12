@@ -16,4 +16,10 @@ FactoryGirl.define do
     description { Faker::Lorem.sentence }
     category
   end
+
+  factory :schedule_item do
+    air { 1.day.from_now }
+    schedule
+    show
+  end
 end

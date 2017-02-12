@@ -9,5 +9,10 @@ RSpec.describe Show, type: :model do
 
   describe 'validations' do
     it { is_expected.to validate_presence_of :name }
+
+    context 'without category' do
+      subject(:show) { build(:show, category: nil) }
+      it { is_expected.to be_valid }
+    end
   end
 end

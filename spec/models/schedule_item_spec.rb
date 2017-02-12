@@ -7,8 +7,19 @@ RSpec.describe ScheduleItem, type: :model do
   end
 
   describe 'validations' do
-    it { is_expected.to validate_presence_of :schedule_id }
-    it { is_expected.to validate_presence_of :show_id }
+    let(:options) { {} }
+    subject(:item) { build(:schedule_item, options) }
+
     it { is_expected.to validate_presence_of :air }
+
+    context 'with no schedule' do
+      let(:options) { { schedule: nil } }
+      it { is_expected.not_to be_valid }
+    end
+
+    context 'with no show' do
+      let(:options) { { show: nil } }
+      it { is_expected.not_to be_valid }
+    end
   end
 end
